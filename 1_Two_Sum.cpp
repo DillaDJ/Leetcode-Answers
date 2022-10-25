@@ -56,7 +56,7 @@ int main() {
 
     vector<int> result = Solution().twoSum(nums, target);
 
-    cout << result[0] << ", " << result[1];
+    cout << result[0] << ", " << result[1] << endl;
 
     return 0;
 
