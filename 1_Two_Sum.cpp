@@ -1,34 +1,40 @@
 #include <iostream>
+#include <unordered_map>
 #include <vector>
-#include <map>
 
 using namespace std;
 
 
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
+    vector<int> twoSum(vector<int>& nums, int target) 
+    {
+        vector<int> result{-1, -1};
+        unordered_map<int, vector<int>> indexMap{};
         
-        vector<int> result = {-1, -1};
-        map<int, vector<int>> indexMap;
-        
-        for (int i = 0; i < nums.size(); i++) {
-            
-            if (indexMap.count(nums[i]) > 0) {
+        for (int i = 0; i < nums.size(); i++) 
+        {            
+            if (indexMap.count(nums[i]) > 0) 
+            {
                 indexMap[nums[i]].push_back(i);
-
-            } else {
-                vector<int> intVector = { i };
+            } 
+            else 
+            {
+                vector<int> intVector { i };
                 indexMap[nums[i]] = intVector;
             }
         }
         
-        for (int i = 0; i < nums.size(); i++) {
+        for (int i = 0; i < nums.size(); i++) 
+        {
             int difference = target - nums[i];
 
-            if (indexMap.count(difference) > 0) {
-                if (i == indexMap[difference][0]) {
-                    if (indexMap[difference].size() > 1) {
+            if (indexMap.count(difference) > 0) 
+            {
+                if (i == indexMap[difference][0]) 
+                {
+                    if (indexMap[difference].size() > 1) 
+                    {
                         vector<int> resultVector = { i, indexMap[difference][1] }; 
                         result = resultVector;
                         break;
@@ -37,7 +43,7 @@ public:
                     continue;
                 }
 
-                vector<int> resultVector = { i, indexMap[difference][0] }; 
+                vector<int> resultVector { i, indexMap[difference][0] }; 
                 result = resultVector;
                 break;
             }
@@ -49,8 +55,8 @@ public:
 
 
 
-int main() {
-
+int main() 
+{
     vector<int> nums = {3,1,3};
     int target = 6;
 
