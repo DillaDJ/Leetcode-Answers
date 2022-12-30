@@ -11,23 +11,22 @@ public:
         
         string prefix = strs[0];
 
-        for (int i = 1; i < strs.size(); i++)
+        for (int i{1}; i < strs.size(); i++)
         {
-            if (strs[i] == "" or prefix == "") {
+            if (strs[i] == "" || prefix == "") {
                 return "";
             }
 
-            for (int j = 0; j < strs[i].length(); j++) {
-                
-                if (strs[i][j] != prefix[j]) {
+            for (int j{0}; j < strs[i].length(); j++) 
+            {
+                if (strs[i][j] != prefix[j]) 
+                {
                     prefix = prefix.substr(0, j);
                     break;
                 }
 
-                if (j == strs[i].length() - 1) {
+                if (j == strs[i].length() - 1)
                     prefix = prefix.substr(0, j + 1);
-                }
-
             }
         }
 
