@@ -9,13 +9,12 @@ class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
         
-        string prefix = strs[0];
+        string prefix{strs[0]};
 
         for (int i{1}; i < strs.size(); i++)
         {
-            if (strs[i] == "" || prefix == "") {
+            if (strs[i] == "" || prefix == "")
                 return "";
-            }
 
             for (int j{0}; j < strs[i].length(); j++) 
             {
