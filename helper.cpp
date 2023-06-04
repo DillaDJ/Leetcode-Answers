@@ -48,7 +48,7 @@ double getFunctionRuntime(Func func, Args&&... args) {
     
     chrono::high_resolution_clock::time_point end { chrono::high_resolution_clock::now() };
 
-    return chrono::duration_cast<chrono::milliseconds>(end - begin).count();
+    return chrono::duration_cast<chrono::nanoseconds>(end - begin).count();
 }
 
 
@@ -76,7 +76,7 @@ void outputFunctionStats(Func func, Args&&... args) {
     cout << '\n';
 
     double runtime { getFunctionRuntime(func, forward<Args>(args)...) };
-    cout << "Runtime: " << runtime << "ms\n" << endl;
+    cout << "Runtime: " << runtime << "ns\n" << endl;
 
     case_idx++;
 }
