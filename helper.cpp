@@ -22,6 +22,11 @@ void customPrint<bool>(const bool& b) {
 
 template<typename T>
 void customPrint(const vector<T>& v) {
+    if (v.size() == 0) {
+        cout << "[]";
+        return;
+    }
+
     cout << "[";
 
     for (int i = 0; i < v.size() - 1; i++) {
@@ -48,7 +53,7 @@ double getFunctionRuntime(Func func, Args&&... args) {
     
     chrono::high_resolution_clock::time_point end { chrono::high_resolution_clock::now() };
 
-    return chrono::duration_cast<chrono::nanoseconds>(end - begin).count();
+    return chrono::duration_cast<chrono::microseconds>(end - begin).count();
 }
 
 
@@ -76,7 +81,7 @@ void outputFunctionStats(Func func, Args&&... args) {
     cout << '\n';
 
     double runtime { getFunctionRuntime(func, forward<Args>(args)...) };
-    cout << "Runtime: " << runtime << "ns\n" << endl;
+    cout << "Runtime: " << runtime << "µs\n" << endl;
 
     case_idx++;
 }
